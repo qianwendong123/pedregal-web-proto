@@ -1,0 +1,115 @@
+/* Base font families */
+@font-face {
+  font-family: 'DD Norms';
+  src: url('../assets/DDNorms-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DD Norms';
+  src: url('../assets/DDNorms-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DD Norms';
+  src: url('../assets/DDNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DD Norms';
+  src: url('../assets/DDNorms-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('../assets/DDNorms-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('../assets/DDNorms-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('../assets/DDNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('../assets/DDNorms-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Named variant families (Tailwind converts underscores to spaces) */
+@font-face {
+  font-family: 'DD Norms-Regular';
+  src: url('../assets/DDNorms-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DD Norms-Medium';
+  src: url('../assets/DDNorms-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DD Norms-Bold';
+  src: url('../assets/DDNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms-Medium';
+  src: url('../assets/DDNorms-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms-Bold';
+  src: url('../assets/DDNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms-ExtraBold';
+  src: url('../assets/DDNorms-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* TT Norms Pro variant */
+@font-face {
+  font-family: 'TT Norms Pro-Normal';
+  src: url('../assets/DDNorms-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Unquoted variant (font-[TT_Norms-Bold] generates unquoted) */
+@font-face {
+  font-family: TT Norms-Bold;
+  src: url('../assets/DDNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
