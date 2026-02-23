@@ -931,7 +931,7 @@ function MobileTopNav() {
 
 function SideNavProposalDesktop() {
   return (
-    <div className="bg-white fixed left-0 top-0 bottom-0 shrink-0 w-[80px] z-[31] hidden md:block">
+    <div className="bg-white fixed left-0 top-[56px] bottom-0 shrink-0 w-[80px] z-[31] hidden md:block">
       <SideNavProposalDesktopNew />
     </div>
   );
@@ -1477,7 +1477,26 @@ function Page({ isCartOpen, onCartClose, onCartClick }: { isCartOpen?: boolean; 
   return (
     <div className="absolute content-stretch flex flex-col h-full items-start left-0 right-0 top-0" data-name="Page">
       <MobileTopNav />
-      <div className="flex flex-1 w-full overflow-hidden mt-[56px] md:mt-0">
+      {/* Top Nav Bar — logo · location · search · notification · cart */}
+      <div className="fixed top-[56px] md:top-0 left-0 right-0 z-[32] flex items-center gap-[12px] pl-[20px] pr-[16px] py-[12px] bg-white shadow-[inset_0px_-1px_0px_0px_#e7e7e7]">
+        {/* Logo — desktop only (mobile has MobileTopNav) */}
+        <div className="hidden md:flex shrink-0">
+          <Frame6 />
+        </div>
+        {/* Location picker — desktop only */}
+        <div className="hidden md:flex shrink-0">
+          <ButtonToggle />
+        </div>
+        {/* Search bar — always visible, fills remaining space */}
+        <FieldContainer />
+        {/* Notification — desktop only */}
+        <div className="hidden md:flex shrink-0">
+          <IconButton />
+        </div>
+        {/* Cart — always visible */}
+        <IconButton2 onClick={onCartClick} />
+      </div>
+      <div className="flex flex-1 w-full overflow-hidden mt-[112px] md:mt-[56px]">
         <SideNavProposalDesktop />
         <div className="flex-1 h-full ml-0 md:ml-[80px] overflow-hidden relative flex">
           <div ref={scrollContainerRef} className="flex-1 min-w-0 overflow-auto relative scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -1564,9 +1583,9 @@ function Page({ isCartOpen, onCartClose, onCartClick }: { isCartOpen?: boolean; 
       {/* Floating Offers Pill */}
       <div
         className={`fixed left-1/2 -translate-x-1/2 z-30 transition-all duration-300 ${showOffersPill ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[8px] pointer-events-none'}`}
-        style={{ bottom: 'calc(64px + 56px + 12px)' }}
+        style={{ bottom: '48px' }}
       >
-        <button className="bg-white rounded-[999px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.15)] flex items-center px-[16px] py-[8px] gap-[4px] cursor-pointer hover:bg-[#f7f7f7] transition-colors">
+        <button className="bg-white rounded-[999px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.15)] flex items-center px-[16px] h-[40px] gap-[4px] cursor-pointer hover:bg-[#f7f7f7] transition-colors">
           <span className="font-['DD_Norms-Bold',sans-serif] text-[14px] text-[#e23744] leading-[20px]">3 offers available</span>
           <svg className="size-[16px]" fill="none" viewBox="0 0 16 16">
             <path d="M6 12L10 8L6 4" stroke="#e23744" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1574,79 +1593,6 @@ function Page({ isCartOpen, onCartClose, onCartClick }: { isCartOpen?: boolean; 
         </button>
       </div>
 
-      {/* Bottom progressive blur backdrop — stacked layers with increasing blur */}
-      <div className="fixed bottom-0 left-0 md:left-[80px] right-0 h-[148px] z-[29] pointer-events-none">
-        {/* Layer 1: subtle blur at top */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 12.5%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 12.5%)', backdropFilter: 'blur(0.5px)', WebkitBackdropFilter: 'blur(0.5px)' }}
-        />
-        {/* Layer 2 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,0) 25%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 12.5%, rgba(0,0,0,0) 25%)', backdropFilter: 'blur(1px)', WebkitBackdropFilter: 'blur(1px)' }}
-        />
-        {/* Layer 3 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%)', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)' }}
-        />
-        {/* Layer 4 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
-        />
-        {/* Layer 5 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
-        />
-        {/* Layer 6 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
-        />
-        {/* Layer 7 */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}
-        />
-        {/* Layer 8: heaviest blur at bottom */}
-        <div
-          className="absolute inset-0"
-          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 100%)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
-        />
-        {/* White gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.8) 100%)' }}
-        />
-      </div>
-
-      {/* Bottom Floating Search & Cart Bar */}
-      <div className="fixed bottom-[64px] left-1/2 -translate-x-1/2 z-30 flex items-center gap-[12px]">
-        <div className="bg-white rounded-[999px] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.15)] flex items-center px-[16px] py-[12px] gap-[8px] min-w-[320px]">
-          <svg className="shrink-0 size-[20px]" fill="none" viewBox="0 0 20 20">
-            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#191919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M19 19L14.65 14.65" stroke="#191919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <input 
-            type="text" 
-            placeholder="Search Starbucks" 
-            className="flex-1 outline-none border-none text-[16px] font-['DD_Norms-Regular',sans-serif] text-[#191919] placeholder:text-[#767676]"
-          />
-        </div>
-        <button 
-          onClick={onCartClick}
-          className="bg-white rounded-full shadow-[0px_4px_16px_0px_rgba(0,0,0,0.15)] p-[12px] flex items-center justify-center hover:bg-[#f7f7f7] transition-colors"
-        >
-          <svg className="size-[20px]" fill="none" viewBox="0 0 20 20">
-            <path d="M7 18C7.55228 18 8 17.5523 8 17C8 16.4477 7.55228 16 7 16C6.44772 16 6 16.4477 6 17C6 17.5523 6.44772 18 7 18Z" stroke="#191919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M16 18C16.5523 18 17 17.5523 17 17C17 16.4477 16.5523 16 16 16C15.4477 16 15 16.4477 15 17C15 17.5523 15.4477 18 16 18Z" stroke="#191919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M1 1H4L6.68 11.39C6.77144 11.8504 7.02191 12.264 7.38755 12.5583C7.75318 12.8526 8.2107 13.009 8.68 13H15.4C15.8693 13.009 16.3268 12.8526 16.6925 12.5583C17.0581 12.264 17.3086 11.8504 17.4 11.39L19 5H5" stroke="#191919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div>
     </div>
   );
 }
